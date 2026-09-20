@@ -1,12 +1,10 @@
-import React from "react";
 import { Minus, Plus } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement, reset } from "./redux/slices/counter";
+import { useDispatch } from "react-redux";
+import { increment, decrement, reset } from "./redux/slices/counterSlice";
 import Count from "./components/Count";
+
 const App = () => {
   const dispatch = useDispatch();
-  const countValue = useSelector((state) => state.counter.value);
-  console.log(countValue)
   return (
     <div className="shadow-md bg-[#F8FAFC] h-75 w-62.5 grid place-items-center rounded-2xl">
       {/* Title */}
@@ -21,6 +19,8 @@ const App = () => {
           onClick={() => {
             dispatch(decrement());
           }}
+          type="button"
+          aria-label="Decrease count"
         >
           <Minus size={20} />
         </button>
@@ -30,6 +30,7 @@ const App = () => {
           onClick={() => {
             dispatch(reset());
           }}
+          type="button"
         >
           reset
         </button>
@@ -39,6 +40,8 @@ const App = () => {
           onClick={() => {
             dispatch(increment());
           }}
+          type="button"
+          aria-label="Increase count"
         >
           <Plus size={20} />
         </button>
